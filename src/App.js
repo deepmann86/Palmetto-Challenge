@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import ImageSearchForm from "./Components/ImageSearchForm";
+import SavedImages from "./Components/SavedImages";
 import './App.css';
 
 function App() {
-  return (
+    const [idsList, saveIdsList] = useState([]);
+    const saveImageId = (picId, pageURL) => {
+        if(idsList.filter(({id}) => id === picId).length) {
+            return null;
+        }
+        saveIdsList([...idsList, {id: picId,  pageURL}])
+    };
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <ImageSearchForm saveImageId={saveImageId} idsList={idsList}/>
+        <SavedImages idsList={idsList} />
     </div>
-  );
+    );
 }
 
 export default App;

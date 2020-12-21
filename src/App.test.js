@@ -1,8 +1,20 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+configure({adapter: new Adapter()});
+
+
+describe("Should render App and its child components", () => {
+    let component;
+
+    beforeEach(() => {
+        component = shallow(<App />);
+    });
+
+    it("renders the App", () => {
+        expect(component).toHaveLength(1);
+    });
+
 });

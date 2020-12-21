@@ -31,10 +31,13 @@ button:focus {
     font-size: 18px;
 }
 
+.image-search-container {
+    border-right: 1px solid #c9c0c0;
+}
+
 .image-search-form {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #424242;
 }
 
 .image-search-form input,

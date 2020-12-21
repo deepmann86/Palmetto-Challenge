@@ -29,7 +29,7 @@ const ImageSearchForm = (props) => {
 
     const {isLoading, list} = state;
     return (
-    <div>
+    <div className="image-search-container">
         <form className="image-search-form" onSubmit={onSubmit}>
             <input
             type="text"

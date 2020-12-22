@@ -17,14 +17,15 @@ const ImageSearchForm = (props) => {
     });
     const onSubmit = (e) => {
         const {keyword, category} = state;
-        setState({...state, isLoading: true})
+        setState({...state, isLoading: true});
         e.preventDefault();
 
         axios.get(`https://pixabay.com/api/?key=${API_KEY}&q=${keyword}+${category}&image_type=photo`)
         .then((res) => {
             const { data } = res;
             setState({...state, list: data.hits || [], isLoading: false})
-        });
+        })
+        .catch(err => console.log(err));
     };
 
     const {isLoading, list} = state;
@@ -33,8 +34,8 @@ const ImageSearchForm = (props) => {
         <form className="image-search-form" onSubmit={onSubmit}>
             <input
             type="text"
-            placeholder="keyword..."
-            onChange={({target}) => setState({ ...state, keyword: target.value })}/>
+            placeholder="Keyword..."
+            onChange={({target}) => setState({...state, keyword: target.value })}/>
 
             <select name="categories" onChange={({target}) => setState({ ...state, category: target.value })} defaultValue={'DEFAULT'}>
                 <option value="DEFAULT" disabled>Category...</option>
@@ -45,7 +46,7 @@ const ImageSearchForm = (props) => {
         <ImageList list={list} isLoading={isLoading} saveImageId={saveImageId} idsList={idsList}/>
     </div>
     );
-}
+};
 
 ImageSearchForm.propTypes = {
     saveImageId: PropTypes.func,

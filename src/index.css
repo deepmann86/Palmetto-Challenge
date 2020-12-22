@@ -108,6 +108,8 @@ button:focus {
     left: 0;
     border: none;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .img-saved {
@@ -115,7 +117,7 @@ button:focus {
 }
 
 .img-not-saved {
-    background: red;
+    background: indianred;
 }
 
 .saved-images {

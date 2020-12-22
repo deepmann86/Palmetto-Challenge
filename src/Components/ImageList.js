@@ -14,11 +14,8 @@ const ImageList = props => {
         : (list || []).map(({previewURL, tags, favorites, likes, id, pageURL, user}, index) =>  (
         <div className="list-item" key={index}>
             <div className="image-wrapper">
-{/*
-                {isImageSaved(id) ? <span className="img-saved">Saved</span> : <span className="img-not-saved">Save</span>}
-*/}
                 <img src={previewURL} alt={user} />
-                {isImageSaved(id) ? <button className="img-saved">Saved </button> :
+                {isImageSaved(id) ? <button className="img-saved">Saved</button> :
                 <button className="img-not-saved" onClick={() => saveImageId(id, pageURL)}>Save</button>}
             </div>
 
@@ -36,7 +33,7 @@ const ImageList = props => {
         )}
     </div>
     );
-}
+};
 
 ImageList.propTypes = {
     list: PropTypes.array,
